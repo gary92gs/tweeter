@@ -8,7 +8,9 @@ const bodyParser    = require("body-parser");
 const app           = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static("public"));
+
+//this is sending static html, css, and js to the client!!
+app.use(express.static("public")); //'public' is the root
 
 // The in-memory database of tweets. It's a basic object with an array in it.
 const db = require("./lib/in-memory-db");
