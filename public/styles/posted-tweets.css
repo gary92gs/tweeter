@@ -1,17 +1,20 @@
-.post-tweet-container {
+.post-tweet-container{
   width: 100%;
+}
+.post-tweet {
+  margin-block: 0.25em;
   padding-inline: 0.25em;
   font-family: 'Source Sans 3', sans-serif;
   font-size: 1em;
   border: 3px solid rgb(97, 97, 97);
 }
 
-.post-tweet-container header {
+.post-tweet header {
   display: flex;
   justify-content: space-between;
 }
 
-.post-tweet-container h3 {
+.post-tweet  h3 {
   margin: 0;
   padding-block: 0.25em;
   font-weight: 600;
@@ -21,7 +24,7 @@
 .post-tweet-footer {
   display: flex;
   justify-content: space-between;
-  padding-top: 0.75em;
+  padding-block: 0.75em;
   font-size: 0.5em;
   font-weight: 600;
 }
