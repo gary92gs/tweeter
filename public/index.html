@@ -12,9 +12,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+3:wght@300;600&display=swap" rel="stylesheet">
     
+    <!-- Tweet Containers CSS -->
+    <link rel="stylesheet" href="styles/posted-tweets.css" type="text/css"/>
+
     <!-- Tweet Form CSS -->
     <link rel="stylesheet" href="styles/new-tweet.css" type="text/css"/>
-    
+
     <!-- App CSS -->
     <link rel="stylesheet" href="styles/layout.css" type="text/css" />
 
@@ -55,33 +58,38 @@
 
     <!-- Page-specific (main) content here -->
     <main class="container">
-      <section class="new-tweet">
+      <section class="new-tweet-container">
         <form action="/tweets/" method="POST">
           <label for="tweet-text"></label>
-
-          <textarea class="tweet-textarea" name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
-          <div class="tweet-info">
+          <textarea class="new-tweet-textarea" name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
+          <div class="new-tweet-info">
             <button type="submit">Tweet</button>
             <output name="counter" class="counter" for="tweet-text">140</output>
           </div>
         </form>
       </section>
-      <article class="tweet-container">
+
+      <article class="post-tweet-container">
+        
         <header>
-          <i class="fa-regular fa-user"></i>
-          <span>Username</span>
+          <div class="tweeted-user">
+            <i class="fa-regular fa-user"></i>
+            <span>Username</span>
+          </div>
           <span>User-Tag</span>
         </header>
 
-        <span>Tweet Contents</span>
+        <h3>Tweet Contents</h3>
 
-        <footer>
+        <footer class="post-tweet-footer">
           <span>Post-Age</span>
-          <i class="fa-solid fa-flag"></i>
-          <i class="fa-solid fa-retweet"></i>
-          <i class="fa-solid fa-heart"></i>
-
+          <div>
+            <i class="fa-solid fa-flag"></i>
+            <i class="fa-solid fa-retweet"></i>
+            <i class="fa-solid fa-heart"></i>
+          </div>
         </footer>
+
       </article>      
     </main>
 

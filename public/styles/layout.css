@@ -33,4 +33,7 @@ main.container {
   background-color: inherit;
   
 }
+main.container > * {
+  padding-block: 0.5em;
+}
 
