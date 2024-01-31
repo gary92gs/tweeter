@@ -1,0 +1,40 @@
+.new-tweet {
+  width: 100%;
+  font-family: 'Source Sans 3', sans-serif;
+}
+
+.new-tweet form {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5em 0;
+}
+
+.new-tweet form textarea {
+  background-color: inherit;
+  width: 100%;
+  height: 1.75em;
+  border: 0;
+  resize: none;
+  margin: 0.5em 0;
+  border-bottom: 4px solid rgb(97, 97, 97);
+  font-weight: 600;
+}
+
+.tweet-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0.2em;
+  font-family: 'Bungee', sans-serif;
+  color: rgb(97, 97, 97);
+}
+
+.tweet-info button {
+  color: white;
+  background-color: #4056A1;
+  border: 0;
+}
+
+.counter.negative {
+  color: red;
+}

@@ -1,11 +1,29 @@
 nav {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   height: 120px;
   width: 100dvw;
+  padding-inline: 2em;
   background-color: #4056A1;
   color: white;
+  font-family: 'Source Sans 3', sans-serif;
 }
 
 .nav-logo {
   font-family: 'Bungee', sans-serif;
-  margin-inline: 1.5em;
 }
+
+.nav-logo,
+.nav-new-tweet{
+  margin: 0;
+}
+
+.nav-new-tweet {
+  font-weight: 300;
+}
+.nav-new-tweet span {
+  font-weight: 600;
+}
+
