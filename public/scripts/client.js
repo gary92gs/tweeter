@@ -11,7 +11,6 @@ const escapeFilter = function(str) {
   return div.innerHTML;
 };
 
-
 //note: asynchronous request to database (ajax), then call this function to generate html (because we are returning)
 const createTweetElement = function(tweetObj) {
   //determine post age in days with timeago library (imported in index.html header)
@@ -40,14 +39,41 @@ const createTweetElement = function(tweetObj) {
   return tweet;
 };
 
-const renderTweetPostError = function() {
-  //generate error
-  const errorHTML = $(`
-    <div>
+const renderTweetPostError = function(tweetErr) {
+  let image = '';
+  let span1 = '';
+  let span2 = '';
+  if (tweetErr === 'too long') {
+    image = 'bird-talking-too-much';
+    span1 = "A little birdie is a bit of an over-sharer, don't you think?";
+    span2 = 'Try limiting your post to 140 characters.';
+  }
+  if (tweetErr === 'too short') {
+    image = 'bird-talking-too-little';
+    span1 = "What's the matter? Cat got your tongue?";
+    span2 = 'Try entering some characters... seriously.';
+  }
 
+  //generate error message
+  const errorHTML = $(`
+    <div class="new-tweet-error">
+      <div class="new-tweet-error-message">
+        <h2>Error</h2>
+        <span>${span1}</span>
+        <span>${span2}</span>
+        <button class="new-tweet-error-button">OK</button>
+      </div>
+      <img class="new-tweet-error-image full" src="/images/${image}.png" alt="">
     </div>
-    
   `);
+
+  $('body').prepend(errorHTML);
+
+  //allow user to remove the invalid tweet error message
+  //need event handler to be issued when error message rendered, or button won't work
+  $('.new-tweet-error-button').on('click', function() {
+    $(this).parent().parent().remove();
+  });
 };
 
 //loads pre-existing tweets into DOM. all function calls must exist in document.ready function
@@ -88,11 +114,11 @@ $(document).ready(function() {
     event.preventDefault();
     const tweetSubmission = $('.new-tweet-textarea').val();
     if (tweetSubmission === '') {
-      alert('You cannot submit an empty Tweet!');
+      renderTweetPostError('too short');
       return;
     }
     if (tweetSubmission.length > 140) {
-      alert('You cannot submit a Tweet longer than 140 characters!');
+      renderTweetPostError('too long');
       return;
     }
     console.log();
@@ -104,7 +130,7 @@ $(document).ready(function() {
       method: 'POST',
       // encode post request to urlencoding
       data: data,
-      success: (response) => {
+      success: () => {
         loadTweetDB();
       },
       error: (error) => {
@@ -112,11 +138,5 @@ $(document).ready(function() {
       },
     });
   });
-
-  $('.new-tweet-error-message button').on('click', function() {
-    alert('error message ok button clicked');
-  });
-
-
 });
 

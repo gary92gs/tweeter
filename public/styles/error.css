@@ -8,6 +8,7 @@
   background-color: #f4f1ec;
   border: 2px rgb(97, 97, 97) solid;
   border-radius: 10px;
+  z-index: 10;
 }
 .new-tweet-error-image {
   width: 65%;
