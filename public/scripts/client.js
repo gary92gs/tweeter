@@ -4,6 +4,14 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+//helper function that prevents app from running user-injected script (provided by lhl compass)
+const escapeFilter = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
+
+
 //note: asynchronous request to database (ajax), then call this function to generate html (because we are returning)
 const createTweetElement = function(tweetObj) {
   //determine post age in days with timeago library (imported in index.html header)
@@ -18,7 +26,7 @@ const createTweetElement = function(tweetObj) {
         </div>
         <span>${tweetObj.user.handle}</span>
       </header>
-      <h3>${tweetObj.content.text}</h3>
+      <h3>${escapeFilter(tweetObj.content.text)}</h3>
       <footer class="post-tweet-footer">
         <span>${postAge}</span>
         <div>
@@ -34,8 +42,6 @@ const createTweetElement = function(tweetObj) {
 
 //loads pre-existing tweets into DOM. all function calls must exist in document.ready function
 const renderPostedTweets = function(tweetDBarr) {
-
-
   //clear DOM before rendering current database
   $('.post-tweet-container').empty();
   //append each tweet at the top of the list (prepend)
@@ -61,6 +67,7 @@ const loadTweetDB = function() {
 };
 
 
+
 $(document).ready(function() {
 
   loadTweetDB();
@@ -69,6 +76,17 @@ $(document).ready(function() {
   $('.new-tweet-container form').on('submit', (event) => {
     //stop browser from redirecting automatically
     event.preventDefault();
+    const tweetSubmission = $('.new-tweet-textarea').val();
+    if (tweetSubmission === '') {
+      alert('You cannot submit an empty Tweet!');
+      return;
+    }
+    if (tweetSubmission.length > 140) {
+      alert('You cannot submit a Tweet longer than 140 characters!');
+      return;
+    }
+    console.log();
+
     //encode form data submission in urlencoding
     const data = $('.new-tweet-container form').serialize();
     $.ajax({
@@ -79,7 +97,7 @@ $(document).ready(function() {
       success: (response) => {
         loadTweetDB();
       },
-      error: (error) => { 
+      error: (error) => {
         console.log(error);
       },
     });
