@@ -12,6 +12,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+3:wght@300;600&display=swap" rel="stylesheet">
     
+    <!-- New Tweet Error Message CSS -->
+    <link rel="stylesheet" href="styles/error.css" type="text/css"/>
+
     <!-- Tweet Containers CSS -->
     <link rel="stylesheet" href="styles/posted-tweets.css" type="text/css"/>
 
@@ -58,6 +61,18 @@
           <h2>Ada Lovelace</h2>
       </div>
     </header>
+
+    <div class="new-tweet-error">
+      
+      <div class="new-tweet-error-message">
+        <h2>Error</h2>
+        <span>A little birdie is a bit of an over-sharer, don't you think?</span>
+        <span>Try limiting your post to 140 characters.</span>
+        <button>OK</button>
+      </div>
+      <img class="new-tweet-error-image full" src="/images/bird-talking-too-much.png" alt="">
+    </div>
+
 
     <!-- Page-specific (main) content here -->
     <main class="container">

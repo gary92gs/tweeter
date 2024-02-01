@@ -5,7 +5,7 @@
  */
 
 //helper function that prevents app from running user-injected script (provided by lhl compass)
-const escapeFilter = function (str) {
+const escapeFilter = function(str) {
   let div = document.createElement("div");
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
@@ -17,8 +17,8 @@ const createTweetElement = function(tweetObj) {
   //determine post age in days with timeago library (imported in index.html header)
   const postAge = timeago.format(new Date(tweetObj.created_at));
   //create html structure for individual tweet
-  const tweet = $(
-    `<article class="post-tweet">   
+  const tweet = $(`
+    <article class="post-tweet">   
       <header>
         <div class="tweeted-user">
           <img src="${tweetObj.user.avatars}" alt="user profile image"/>
@@ -35,9 +35,19 @@ const createTweetElement = function(tweetObj) {
           <i class="fa-solid fa-heart"></i>
         </div>
       </footer>
-    </article>`
-  );
+    </article>
+  `);
   return tweet;
+};
+
+const renderTweetPostError = function() {
+  //generate error
+  const errorHTML = $(`
+    <div>
+
+    </div>
+    
+  `);
 };
 
 //loads pre-existing tweets into DOM. all function calls must exist in document.ready function
@@ -101,6 +111,10 @@ $(document).ready(function() {
         console.log(error);
       },
     });
+  });
+
+  $('.new-tweet-error-message button').on('click', function() {
+    alert('error message ok button clicked');
   });
 
 
