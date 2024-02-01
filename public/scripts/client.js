@@ -41,17 +41,14 @@ const createTweetElement = function(tweetObj) {
 
 const renderTweetPostError = function(tweetErr) {
   let image = '';
-  let span1 = '';
-  let span2 = '';
+  let span = '';
   if (tweetErr === 'too long') {
     image = 'bird-talking-too-much';
-    span1 = "A little birdie is a bit of an over-sharer, don't you think?";
-    span2 = 'Try limiting your post to 140 characters.';
+    span = "A little birdie is a bit of an over-sharer, don't you think? Try limiting your post to 140 characters.";
   }
   if (tweetErr === 'too short') {
     image = 'bird-talking-too-little';
-    span1 = "What's the matter? Cat got your tongue?";
-    span2 = 'Try entering some characters... seriously.';
+    span = "What's the matter? Cat got your tongue? Try entering some characters... seriously.";
   }
 
   //generate error message
@@ -59,20 +56,22 @@ const renderTweetPostError = function(tweetErr) {
     <div class="new-tweet-error">
       <div class="new-tweet-error-message">
         <h2>Error</h2>
-        <span>${span1}</span>
-        <span>${span2}</span>
+        <span>${span}</span>
         <button class="new-tweet-error-button">OK</button>
       </div>
       <img class="new-tweet-error-image full" src="/images/${image}.png" alt="">
     </div>
   `);
-
-  $('body').prepend(errorHTML);
-
+  //create html element for error on DOM
+  $('body').prepend(errorHTML)
+  //animate error message appearance
+  $('.new-tweet-error').hide().slideDown();
   //allow user to remove the invalid tweet error message
   //need event handler to be issued when error message rendered, or button won't work
   $('.new-tweet-error-button').on('click', function() {
-    $(this).parent().parent().remove();
+    $(this).parent().parent().slideUp(400, function(){
+      $(this).remove();
+    });
   });
 };
 

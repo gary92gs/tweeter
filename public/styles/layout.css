@@ -23,17 +23,49 @@ body {
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
-
 main.container {
   width: 90%;
   margin: 0 auto;
+  padding-top: 120px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
   background-color: inherit;
   
 }
+
 main.container > * {
-  padding-block: 0.5em;
+  padding: 0.5em;
 }
 
+.all-tweets-container {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  height: 100%;
+}
+
+header.user-profile {
+  width: 40%;
+  height: 520px;
+  margin: 0.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url('/images/asfalt--dark--1920x1080.png');
+  background-size: contain;
+  background-position: center;
+}
+
+@media only screen and (max-width: 1024px){
+  main.container {
+    flex-direction: column;
+  }
+  header.user-profile {
+    width: 100%;
+    margin-inline: 0;
+  }
+  .all-tweets-container {
+    width: 100%;
+  }
+}

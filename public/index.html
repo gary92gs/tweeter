@@ -52,42 +52,31 @@
         <i class="fa-solid fa-angles-down"></i>
       </div>
     </nav>
-    <header class="user-profile">
-      <div>
-          <img src="/images/profile-hex.png"> 
-      </div>
-      <br>
-      <div>
-          <h2>Ada Lovelace</h2>
-      </div>
-    </header>
-
-    <!-- <div class="new-tweet-error">
-      <div class="new-tweet-error-message">
-        <h2>Error</h2>
-        <span>A little birdie is a bit of an over-sharer, don't you think?</span>
-        <span>Try limiting your post to 140 characters.</span>
-        <button>OK</button>
-      </div>
-      <img class="new-tweet-error-image full" src="/images/bird-talking-too-much.png" alt="">
-    </div> -->
-
-
     <!-- Page-specific (main) content here -->
     <main class="container">
-      <section class="new-tweet-container">
-        <form action="/tweets/" method="POST">
-          <label for="tweet-text"></label>
-          <textarea class="new-tweet-textarea" name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
-          <div class="new-tweet-info">
-            <button for="tweet-text" type="submit">Tweet</button>
-            <output name="counter" class="counter" for="tweet-text">140</output>
-          </div>
-        </form>
-      </section>
+      <header class="user-profile">
+        <div>
+          <img src="/images/profile-hex.png"> 
+        </div>
+        <br>
+        <div>
+          <h2>Ada Lovelace</h2>
+        </div>
+      </header>
+      <main class="all-tweets-container">
+        <section class="new-tweet-container">
+          <form action="/tweets/" method="POST">
+            <label for="tweet-text"></label>
+            <textarea class="new-tweet-textarea" name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
+            <div class="new-tweet-info">
+              <button for="tweet-text" type="submit">Tweet</button>
+              <output name="counter" class="counter" for="tweet-text">140</output>
+            </div>
+          </form>
+        </section>
+        <section class="post-tweet-container"></section>
+      </main>
 
-
-      <section class="post-tweet-container"></section>      
     </main>
 
     <script src="scripts/composer-char-counter.js"></script>
