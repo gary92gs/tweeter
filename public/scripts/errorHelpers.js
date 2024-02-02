@@ -23,13 +23,13 @@ const renderTweetPostError = function(tweetErr) {
     </div>
   `);
   //create html element for error on DOM
-  $('body').prepend(errorHTML)
+  $('body').prepend(errorHTML);
   //animate error message appearance
   $('.new-tweet-error').hide().slideDown();
   //allow user to remove the invalid tweet error message
   //need event handler to be issued when error message rendered, or button won't work
   $('.new-tweet-error-button').on('click', function() {
-    $(this).parent().parent().slideUp(400, function(){
+    $(this).parent().parent().slideUp(400, function() {
       $(this).remove();
     });
   });

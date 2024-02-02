@@ -34,16 +34,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <!-- External JS = TIMEAGO LIBRARY -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js" integrity="sha512-SVDh1zH5N9ChofSlNAK43lcNS7lWze6DTVx1JCXH1Tmno+0/1jMpdbR8YDgDUfcUrPp1xyE53G42GFrcM0CMVg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js" integrity="sha512-SVDh1zH5N9ChofSlNAK43lcNS7lWze6DTVx1JCXH1Tmno+0/1jMpdbR8YDgDUfcUrPp1xyE53G42GFrcM0CMVg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     
+    <!-- New-Tweet-Form Helpers (character count) -->
+    <script defer src="scripts/newTweetFormHelpers.js"></script>
+
     <!-- Tweet Helpers JS -->
-    <script src="scripts/tweetHelpers.js"></script>
+    <script defer src="scripts/tweetHelpers.js"></script>
 
     <!-- Error Helpers JS -->
-    <script src="scripts/errorHelpers.js"></script>
+    <script defer src="scripts/errorHelpers.js"></script>
     
     <!-- App JS -->
-    <script type="text/javascript" src="/scripts/client.js"></script>
+    <script defer type="text/javascript" src="/scripts/client.js"></script>
   </head>
 
   <body>
@@ -79,9 +82,6 @@
         </section>
         <section class="post-tweet-container"></section>
       </main>
-
     </main>
-
-    <script src="scripts/composer-char-counter.js"></script>
   </body>
 </html>
