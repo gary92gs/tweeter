@@ -4,111 +4,12 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-//helper function that prevents app from running user-injected script (provided by lhl compass)
-const escapeFilter = function(str) {
-  let div = document.createElement("div");
-  div.appendChild(document.createTextNode(str));
-  return div.innerHTML;
-};
-
-//note: asynchronous request to database (ajax), then call this function to generate html (because we are returning)
-const createTweetElement = function(tweetObj) {
-  //determine post age in days with timeago library (imported in index.html header)
-  const postAge = timeago.format(new Date(tweetObj.created_at));
-  //create html structure for individual tweet
-  const tweet = $(`
-    <article class="post-tweet">   
-      <header>
-        <div class="tweeted-user">
-          <img src="${tweetObj.user.avatars}" alt="user profile image"/>
-          <span>${tweetObj.user.name}</span>
-        </div>
-        <span>${tweetObj.user.handle}</span>
-      </header>
-      <h3>${escapeFilter(tweetObj.content.text)}</h3>
-      <footer class="post-tweet-footer">
-        <span>${postAge}</span>
-        <div>
-          <i class="fa-solid fa-flag"></i>
-          <i class="fa-solid fa-retweet"></i>
-          <i class="fa-solid fa-heart"></i>
-        </div>
-      </footer>
-    </article>
-  `);
-  return tweet;
-};
-
-const renderTweetPostError = function(tweetErr) {
-  let image = '';
-  let span = '';
-  if (tweetErr === 'too long') {
-    image = 'bird-talking-too-much';
-    span = "A little birdie is a bit of an over-sharer, don't you think? Try limiting your post to 140 characters.";
-  }
-  if (tweetErr === 'too short') {
-    image = 'bird-talking-too-little';
-    span = "What's the matter? Cat got your tongue? Try entering some characters... seriously.";
-  }
-
-  //generate error message
-  const errorHTML = $(`
-    <div class="new-tweet-error">
-      <div class="new-tweet-error-message">
-        <h2>Error</h2>
-        <span>${span}</span>
-        <button class="new-tweet-error-button">OK</button>
-      </div>
-      <img class="new-tweet-error-image full" src="/images/${image}.png" alt="">
-    </div>
-  `);
-  //create html element for error on DOM
-  $('body').prepend(errorHTML)
-  //animate error message appearance
-  $('.new-tweet-error').hide().slideDown();
-  //allow user to remove the invalid tweet error message
-  //need event handler to be issued when error message rendered, or button won't work
-  $('.new-tweet-error-button').on('click', function() {
-    $(this).parent().parent().slideUp(400, function(){
-      $(this).remove();
-    });
-  });
-};
-
-//loads pre-existing tweets into DOM. all function calls must exist in document.ready function
-const renderPostedTweets = function(tweetDBarr) {
-  //clear DOM before rendering current database
-  $('.post-tweet-container').empty();
-  //append each tweet at the top of the list (prepend)
-  for (const tweet of tweetDBarr) {
-    $('.post-tweet-container').prepend(createTweetElement(tweet));
-  }
-};
-
-//gets current tweet database
-const loadTweetDB = function() {
-  //request tweets from server database
-  $.ajax({
-    url: '/tweets',
-    method: 'GET',
-    //wait for data, then render all tweets based on data from server database
-    success: (tweetDatabase) => {
-      renderPostedTweets(tweetDatabase);
-    },
-    error: (error) => {
-      console.log(error);
-    },
-  });
-};
-
-
-
 $(document).ready(function() {
 
   loadTweetDB();
 
   // listen for new form submissions
-  $('.new-tweet-container form').on('submit', (event) => {
+  $('.new-tweet-container form').on('submit', function(event) {
     //stop browser from redirecting automatically
     event.preventDefault();
     const tweetSubmission = $('.new-tweet-textarea').val();
@@ -120,7 +21,6 @@ $(document).ready(function() {
       renderTweetPostError('too long');
       return;
     }
-    console.log();
 
     //encode form data submission in urlencoding
     const data = $('.new-tweet-container form').serialize();
@@ -136,6 +36,10 @@ $(document).ready(function() {
         console.log(error);
       },
     });
+    //clear new tweet textarea when post is attempted (regardless of success or error)
+    $(this).find('textarea').val('');
+    //reset character counter (it only resets when you type inside it otherwise)
+    $(this).find('.counter').val(140);
   });
 });
 
