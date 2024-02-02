@@ -15,6 +15,16 @@ nav {
   font-family: 'Bungee', sans-serif;
 }
 
+.nav-details {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.nav-details i {
+  padding-inline: 0.5em;
+}
+
 .nav-logo,
 .nav-new-tweet{
   margin: 0;

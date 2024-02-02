@@ -4,10 +4,11 @@
   width: 90dvw;
   height: 80dvh;
   left: 5%;
-  top: 120px;
+  top: 130px;
   background-color: #f4f1ec;
   border: 2px rgb(97, 97, 97) solid;
   border-radius: 10px;
+  box-shadow: 0 0 0.2em 0.15em rgb(97, 97, 97);
   z-index: 10;
 }
 
@@ -57,6 +58,7 @@
   .new-tweet-error {
     flex-direction: column-reverse;
   }
+  
   .new-tweet-error-message,
   .new-tweet-error-image {
     width: 100%;

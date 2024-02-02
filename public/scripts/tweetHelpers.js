@@ -13,7 +13,7 @@ const createTweetElement = function(tweetObj) {
   //create html structure for individual tweet
   const tweet = $(`
     <article class="post-tweet">   
-      <header>
+      <header class="post-tweet-header">
         <div class="tweeted-user">
           <img src="${tweetObj.user.avatars}" alt="user profile image"/>
           <span>${tweetObj.user.name}</span>
