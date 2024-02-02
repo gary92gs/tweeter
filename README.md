@@ -5,11 +5,11 @@ Tweeter is a simple, single-page Twitter clone.
 This repository is the starter code for the project: Students will fork and clone this repository, then build upon it to practice their HTML, CSS, JS, jQuery and AJAX front-end skills, and their Node, Express back-end skills.
 
 ## Project Images
-- ["main page"](https://github.com/gary92gs/tweeter/blob/master/docs/main-page.png?raw=true)
-- ["individual post with box-shadow highlighting"](https://github.com/gary92gs/tweeter/blob/master/docs/main-page-box-shadow.png?raw=true)
-- ["new posting character counter under limit"](https://github.com/gary92gs/tweeter/blob/master/docs/character-counter-underlimit.png?raw=true)
-- ["new posting character counter over limit"](https://github.com/gary92gs/tweeter/blob/master/docs/character-counter-overlimit.png?raw=true)
-- ["individual post with hover-responsive icon](https://github.com/gary92gs/tweeter/blob/master/docs/responsive-hover-icons.png?raw=true)
+- !["main page"](https://github.com/gary92gs/tweeter/blob/master/docs/main-page.png?raw=true)
+- !["individual post with box-shadow highlighting"](https://github.com/gary92gs/tweeter/blob/master/docs/main-page-box-shadow.png?raw=true)
+- !["new posting character counter under limit"](https://github.com/gary92gs/tweeter/blob/master/docs/character-counter-underlimit.png?raw=true)
+- !["new posting character counter over limit"](https://github.com/gary92gs/tweeter/blob/master/docs/character-counter-overlimit.png?raw=true)
+- !["individual post with hover-responsive icon](https://github.com/gary92gs/tweeter/blob/master/docs/responsive-hover-icons.png?raw=true)
 
 
 ## Getting Started
