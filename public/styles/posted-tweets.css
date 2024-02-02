@@ -1,12 +1,17 @@
 .post-tweet-container{
   width: 100%;
 }
+
 .post-tweet {
   margin-block: 0.25em;
   padding-inline: 0.25em;
   font-family: 'Source Sans 3', sans-serif;
   font-size: 1em;
   border: 3px solid rgb(97, 97, 97);
+}
+
+.post-tweet:hover{
+  box-shadow: 0 0 0.2em 0.15em rgb(97, 97, 97);
 }
 
 .post-tweet header {

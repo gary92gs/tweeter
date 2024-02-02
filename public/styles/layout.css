@@ -46,7 +46,7 @@ main.container > * {
 
 header.user-profile {
   width: 40%;
-  height: 520px;
+  height: 450px;
   margin: 0.5em;
   display: flex;
   flex-direction: column;
